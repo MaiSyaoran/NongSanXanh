@@ -1,0 +1,24 @@
+Slide
+https://localhost:44393/api/slide
+
+OrderDetail
+https://localhost:44393/api/orderdetail
+https://localhost:44393/api/orderdetail/84
+
+Role
+https://localhost:44393/api/role
+https://localhost:44393/api/role/0
+POST, PUT, DELETE
+
+ProductSale
+https://localhost:44393/api/productsale?selectsale=10
+https://localhost:44393/api/productsale?selectsale=20
+https://localhost:44393/api/productsale?selectsale=30
+....
+https://localhost:44393/api/productsale?selectsale=90
+( khong mien phi va khong giam le, mac dinh giam tu 10% den 90%)
+
+Topic
+https://localhost:44393/api/topic
+https://localhost:44393/api/topic/2
+POST, PUT, DELETE

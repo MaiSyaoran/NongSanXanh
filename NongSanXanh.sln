@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NongSanXanh", "NongSanXanh\NongSanXanh.csproj", "{767EAD24-7BA6-4F95-823E-1000A85D1E2D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{4D746D15-54DE-471C-903A-8DF6714F9FA9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI", "WebAPI\WebAPI.csproj", "{06D68912-7936-41AD-99D8-895912157EF7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{767EAD24-7BA6-4F95-823E-1000A85D1E2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{767EAD24-7BA6-4F95-823E-1000A85D1E2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{767EAD24-7BA6-4F95-823E-1000A85D1E2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{767EAD24-7BA6-4F95-823E-1000A85D1E2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D746D15-54DE-471C-903A-8DF6714F9FA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D746D15-54DE-471C-903A-8DF6714F9FA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D746D15-54DE-471C-903A-8DF6714F9FA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D746D15-54DE-471C-903A-8DF6714F9FA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06D68912-7936-41AD-99D8-895912157EF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06D68912-7936-41AD-99D8-895912157EF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06D68912-7936-41AD-99D8-895912157EF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06D68912-7936-41AD-99D8-895912157EF7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {38B0674B-B3FC-4279-B87A-FA530ED99F8B}
+	EndGlobalSection
+EndGlobal

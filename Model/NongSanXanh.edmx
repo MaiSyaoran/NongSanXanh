@@ -1,0 +1,631 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="NongSanXanhModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="category">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="slug" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="parentid" Type="int" Nullable="false" />
+          <Property Name="orders" Type="int" Nullable="false" />
+          <Property Name="metakey" Type="nvarchar" MaxLength="150" />
+          <Property Name="metadesc" Type="nvarchar" MaxLength="150" />
+          <Property Name="created_at" Type="smalldatetime" />
+          <Property Name="created_by" Type="int" />
+          <Property Name="updated_at" Type="smalldatetime" />
+          <Property Name="updated_by" Type="int" />
+          <Property Name="status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="contact">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fullname" Type="nvarchar" MaxLength="100" />
+          <Property Name="email" Type="varchar" MaxLength="100" />
+          <Property Name="phone" Type="varchar" MaxLength="15" />
+          <Property Name="title" Type="nvarchar" MaxLength="255" />
+          <Property Name="detail" Type="ntext" />
+          <Property Name="created_at" Type="smalldatetime" />
+          <Property Name="created_by" Type="int" />
+          <Property Name="updated_at" Type="smalldatetime" />
+          <Property Name="updated_by" Type="int" />
+          <Property Name="status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="menu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="type" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="link" Type="varchar" MaxLength="255" />
+          <Property Name="tableid" Type="int" />
+          <Property Name="parentid" Type="int" Nullable="false" />
+          <Property Name="orders" Type="int" Nullable="false" />
+          <Property Name="position" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="created_at" Type="smalldatetime" Nullable="false" />
+          <Property Name="created_by" Type="int" />
+          <Property Name="updated_at" Type="smalldatetime" Nullable="false" />
+          <Property Name="updated_by" Type="int" />
+          <Property Name="status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="order">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="code" Type="int" Nullable="false" />
+          <Property Name="userid" Type="int" Nullable="false" />
+          <Property Name="created_ate" Type="smalldatetime" Nullable="false" />
+          <Property Name="exportdate" Type="smalldatetime" />
+          <Property Name="deliveryaddress" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="deliveryname" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="deliveryphone" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="deliveryemail" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="updated_at" Type="smalldatetime" Nullable="false" />
+          <Property Name="updated_by" Type="int" />
+          <Property Name="status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ordersdetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="orderid" Type="int" Nullable="false" />
+          <Property Name="productid" Type="int" Nullable="false" />
+          <Property Name="price" Type="float" Nullable="false" />
+          <Property Name="quantity" Type="int" Nullable="false" />
+          <Property Name="priceSale" Type="int" Nullable="false" />
+          <Property Name="amount" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="post">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="topid" Type="int" />
+          <Property Name="title" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="slug" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="detail" Type="ntext" />
+          <Property Name="img" Type="varchar" MaxLength="255" />
+          <Property Name="type" Type="varchar" MaxLength="50" />
+          <Property Name="metakey" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="metadesc" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="created_at" Type="smalldatetime" Nullable="false" />
+          <Property Name="created_by" Type="int" Nullable="false" />
+          <Property Name="updated_at" Type="smalldatetime" Nullable="false" />
+          <Property Name="updated_by" Type="int" Nullable="false" />
+          <Property Name="status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="product">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="catid" Type="int" Nullable="false" />
+          <Property Name="Submenu" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="slug" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="img" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="detail" Type="ntext" Nullable="false" />
+          <Property Name="number" Type="int" Nullable="false" />
+          <Property Name="price" Type="float" Nullable="false" />
+          <Property Name="pricesale" Type="float" Nullable="false" />
+          <Property Name="metakey" Type="nvarchar" MaxLength="150" />
+          <Property Name="metadesc" Type="nvarchar(max)" />
+          <Property Name="created_at" Type="smalldatetime" Nullable="false" />
+          <Property Name="created_by" Type="int" Nullable="false" />
+          <Property Name="updated_at" Type="smalldatetime" Nullable="false" />
+          <Property Name="updated_by" Type="int" Nullable="false" />
+          <Property Name="status" Type="int" Nullable="false" />
+          <Property Name="sold" Type="int" />
+        </EntityType>
+        <EntityType Name="role">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="parentId" Type="int" Nullable="false" />
+          <Property Name="accessName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="description" Type="nvarchar" MaxLength="225" />
+          <Property Name="GropID" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="slider">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="url" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="position" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="img" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="orders" Type="int" />
+          <Property Name="created_at" Type="smalldatetime" Nullable="false" />
+          <Property Name="created_by" Type="int" />
+          <Property Name="updated_at" Type="smalldatetime" Nullable="false" />
+          <Property Name="updated_by" Type="int" />
+          <Property Name="status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="topic">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="slug" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="parentid" Type="int" Nullable="false" />
+          <Property Name="orders" Type="int" Nullable="false" />
+          <Property Name="metakey" Type="varchar" MaxLength="150" />
+          <Property Name="metadesc" Type="nvarchar(max)" />
+          <Property Name="created_at" Type="smalldatetime" Nullable="false" />
+          <Property Name="created_by" Type="int" Nullable="false" />
+          <Property Name="updated_at" Type="smalldatetime" Nullable="false" />
+          <Property Name="updated_by" Type="int" Nullable="false" />
+          <Property Name="status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fullname" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="225" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="gender" Type="nvarchar" MaxLength="5" />
+          <Property Name="phone" Type="varchar" MaxLength="20" />
+          <Property Name="img" Type="varchar" MaxLength="100" />
+          <Property Name="access" Type="int" Nullable="false" />
+          <Property Name="created_at" Type="smalldatetime" Nullable="false" />
+          <Property Name="created_by" Type="int" Nullable="false" />
+          <Property Name="updated_at" Type="smalldatetime" Nullable="false" />
+          <Property Name="updated_by" Type="int" Nullable="false" />
+          <Property Name="status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="NongSanXanhModelStoreContainer">
+          <EntitySet Name="category" EntityType="Self.category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="contact" EntityType="Self.contact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="menu" EntityType="Self.menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="order" EntityType="Self.order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ordersdetail" EntityType="Self.ordersdetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="post" EntityType="Self.post" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="product" EntityType="Self.product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="role" EntityType="Self.role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="slider" EntityType="Self.slider" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="topic" EntityType="Self.topic" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user" EntityType="Self.user" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NongSanXanhModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="category">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="slug" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="parentid" Type="Int32" Nullable="false" />
+          <Property Name="orders" Type="Int32" Nullable="false" />
+          <Property Name="metakey" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="metadesc" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="created_at" Type="DateTime" Precision="0" />
+          <Property Name="created_by" Type="Int32" />
+          <Property Name="updated_at" Type="DateTime" Precision="0" />
+          <Property Name="updated_by" Type="Int32" />
+          <Property Name="status" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="contact">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fullname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="detail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="created_at" Type="DateTime" Precision="0" />
+          <Property Name="created_by" Type="Int32" />
+          <Property Name="updated_at" Type="DateTime" Precision="0" />
+          <Property Name="updated_by" Type="Int32" />
+          <Property Name="status" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="menu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="type" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="link" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="tableid" Type="Int32" />
+          <Property Name="parentid" Type="Int32" Nullable="false" />
+          <Property Name="orders" Type="Int32" Nullable="false" />
+          <Property Name="position" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="created_by" Type="Int32" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="updated_by" Type="Int32" />
+          <Property Name="status" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="order">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="code" Type="Int32" Nullable="false" />
+          <Property Name="userid" Type="Int32" Nullable="false" />
+          <Property Name="created_ate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="exportdate" Type="DateTime" Precision="0" />
+          <Property Name="deliveryaddress" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="deliveryname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="deliveryphone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="deliveryemail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="updated_by" Type="Int32" />
+          <Property Name="status" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ordersdetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="orderid" Type="Int32" Nullable="false" />
+          <Property Name="productid" Type="Int32" Nullable="false" />
+          <Property Name="price" Type="Double" Nullable="false" />
+          <Property Name="quantity" Type="Int32" Nullable="false" />
+          <Property Name="priceSale" Type="Int32" Nullable="false" />
+          <Property Name="amount" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="post">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="topid" Type="Int32" />
+          <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="slug" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="detail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="img" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="metakey" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="metadesc" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="created_by" Type="Int32" Nullable="false" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="updated_by" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="product">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="catid" Type="Int32" Nullable="false" />
+          <Property Name="Submenu" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="slug" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="img" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="detail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="number" Type="Int32" Nullable="false" />
+          <Property Name="price" Type="Double" Nullable="false" />
+          <Property Name="pricesale" Type="Double" Nullable="false" />
+          <Property Name="metakey" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="metadesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="created_by" Type="Int32" Nullable="false" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="updated_by" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="Int32" Nullable="false" />
+          <Property Name="sold" Type="Int32" />
+        </EntityType>
+        <EntityType Name="role">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="parentId" Type="Int32" Nullable="false" />
+          <Property Name="accessName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="225" FixedLength="false" Unicode="true" />
+          <Property Name="GropID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="slider">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="url" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="position" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="img" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="orders" Type="Int32" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="created_by" Type="Int32" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="updated_by" Type="Int32" />
+          <Property Name="status" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="topic">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="slug" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="parentid" Type="Int32" Nullable="false" />
+          <Property Name="orders" Type="Int32" Nullable="false" />
+          <Property Name="metakey" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="metadesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="created_by" Type="Int32" Nullable="false" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="updated_by" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fullname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="username" Type="String" MaxLength="225" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="gender" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="img" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="access" Type="Int32" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="created_by" Type="Int32" Nullable="false" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="updated_by" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="NongSanXanhEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="categories" EntityType="Self.category" />
+          <EntitySet Name="contacts" EntityType="Self.contact" />
+          <EntitySet Name="menus" EntityType="Self.menu" />
+          <EntitySet Name="orders" EntityType="Self.order" />
+          <EntitySet Name="ordersdetails" EntityType="Self.ordersdetail" />
+          <EntitySet Name="posts" EntityType="Self.post" />
+          <EntitySet Name="products" EntityType="Self.product" />
+          <EntitySet Name="roles" EntityType="Self.role" />
+          <EntitySet Name="sliders" EntityType="Self.slider" />
+          <EntitySet Name="topics" EntityType="Self.topic" />
+          <EntitySet Name="users" EntityType="Self.user" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NongSanXanhModelStoreContainer" CdmEntityContainer="NongSanXanhEntities">
+          <EntitySetMapping Name="categories">
+            <EntityTypeMapping TypeName="NongSanXanhModel.category">
+              <MappingFragment StoreEntitySet="category">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="slug" ColumnName="slug" />
+                <ScalarProperty Name="parentid" ColumnName="parentid" />
+                <ScalarProperty Name="orders" ColumnName="orders" />
+                <ScalarProperty Name="metakey" ColumnName="metakey" />
+                <ScalarProperty Name="metadesc" ColumnName="metadesc" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="contacts">
+            <EntityTypeMapping TypeName="NongSanXanhModel.contact">
+              <MappingFragment StoreEntitySet="contact">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="fullname" ColumnName="fullname" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="detail" ColumnName="detail" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="menus">
+            <EntityTypeMapping TypeName="NongSanXanhModel.menu">
+              <MappingFragment StoreEntitySet="menu">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="link" ColumnName="link" />
+                <ScalarProperty Name="tableid" ColumnName="tableid" />
+                <ScalarProperty Name="parentid" ColumnName="parentid" />
+                <ScalarProperty Name="orders" ColumnName="orders" />
+                <ScalarProperty Name="position" ColumnName="position" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="orders">
+            <EntityTypeMapping TypeName="NongSanXanhModel.order">
+              <MappingFragment StoreEntitySet="order">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="created_ate" ColumnName="created_ate" />
+                <ScalarProperty Name="exportdate" ColumnName="exportdate" />
+                <ScalarProperty Name="deliveryaddress" ColumnName="deliveryaddress" />
+                <ScalarProperty Name="deliveryname" ColumnName="deliveryname" />
+                <ScalarProperty Name="deliveryphone" ColumnName="deliveryphone" />
+                <ScalarProperty Name="deliveryemail" ColumnName="deliveryemail" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ordersdetails">
+            <EntityTypeMapping TypeName="NongSanXanhModel.ordersdetail">
+              <MappingFragment StoreEntitySet="ordersdetail">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="orderid" ColumnName="orderid" />
+                <ScalarProperty Name="productid" ColumnName="productid" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="priceSale" ColumnName="priceSale" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="posts">
+            <EntityTypeMapping TypeName="NongSanXanhModel.post">
+              <MappingFragment StoreEntitySet="post">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="topid" ColumnName="topid" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="slug" ColumnName="slug" />
+                <ScalarProperty Name="detail" ColumnName="detail" />
+                <ScalarProperty Name="img" ColumnName="img" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="metakey" ColumnName="metakey" />
+                <ScalarProperty Name="metadesc" ColumnName="metadesc" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="products">
+            <EntityTypeMapping TypeName="NongSanXanhModel.product">
+              <MappingFragment StoreEntitySet="product">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="catid" ColumnName="catid" />
+                <ScalarProperty Name="Submenu" ColumnName="Submenu" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="slug" ColumnName="slug" />
+                <ScalarProperty Name="img" ColumnName="img" />
+                <ScalarProperty Name="detail" ColumnName="detail" />
+                <ScalarProperty Name="number" ColumnName="number" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="pricesale" ColumnName="pricesale" />
+                <ScalarProperty Name="metakey" ColumnName="metakey" />
+                <ScalarProperty Name="metadesc" ColumnName="metadesc" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="sold" ColumnName="sold" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="roles">
+            <EntityTypeMapping TypeName="NongSanXanhModel.role">
+              <MappingFragment StoreEntitySet="role">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="parentId" ColumnName="parentId" />
+                <ScalarProperty Name="accessName" ColumnName="accessName" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="GropID" ColumnName="GropID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sliders">
+            <EntityTypeMapping TypeName="NongSanXanhModel.slider">
+              <MappingFragment StoreEntitySet="slider">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="url" ColumnName="url" />
+                <ScalarProperty Name="position" ColumnName="position" />
+                <ScalarProperty Name="img" ColumnName="img" />
+                <ScalarProperty Name="orders" ColumnName="orders" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="topics">
+            <EntityTypeMapping TypeName="NongSanXanhModel.topic">
+              <MappingFragment StoreEntitySet="topic">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="slug" ColumnName="slug" />
+                <ScalarProperty Name="parentid" ColumnName="parentid" />
+                <ScalarProperty Name="orders" ColumnName="orders" />
+                <ScalarProperty Name="metakey" ColumnName="metakey" />
+                <ScalarProperty Name="metadesc" ColumnName="metadesc" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="NongSanXanhModel.user">
+              <MappingFragment StoreEntitySet="user">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="fullname" ColumnName="fullname" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="img" ColumnName="img" />
+                <ScalarProperty Name="access" ColumnName="access" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
